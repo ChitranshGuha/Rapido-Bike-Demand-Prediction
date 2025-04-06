@@ -131,8 +131,3 @@ const apiKey = "your_openweathermap_api_key";
 ## 📄 License
 
 MIT License © [Chitransh Guha](https://github.com/ChitranshGuha)
-```
-
----
-
-Let me know if you want me to include the dataset link, training notebook reference, or deployment guide too!
