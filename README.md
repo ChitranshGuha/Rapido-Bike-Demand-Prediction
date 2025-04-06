@@ -112,11 +112,9 @@ const apiKey = "your_openweathermap_api_key";
 
 ## 📸 Screenshots
 
-## 📸 Screenshots
+![Homepage](Screenshot%202025-04-07%20012326.png)
 
-![Homepage](Screenshot 2025-04-07 012326.png)
-
-![Prediction](Screenshot 2025-04-07 012344.png)
+![Prediction](Screenshot%202025-04-07%20012344.png)
 
 
 ---
