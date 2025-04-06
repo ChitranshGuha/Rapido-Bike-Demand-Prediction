@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapido Demand Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app" id="app">
+    <header>
+      <h1>🚴‍♂️ Rapido Demand Predictor</h1>
+      <button id="themeToggle">🌓</button>
+    </header>
+
+    <main>
+      <form id="predictionForm">
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="datetime">Datetime:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required />
+          </div>
+
+          <div class="input-group">
+            <label for="weather">Weather Condition:</label>
+            <select id="weather" name="weather" required>
+              <option value="1">☀️ Clear (1)</option>
+              <option value="2">☁️ Cloudy (2)</option>
+              <option value="3">🌧️ Rainy (3)</option>
+              <option value="4">⛈️ Stormy (4)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="temp">Temperature (°C):</label>
+            <input type="number" id="temp" name="temp" step="0.1" required />
+          </div>
+
+          <div class="input-group">
+            <label for="atemp">Feels Like Temperature (°C):</label>
+            <input type="number" id="atemp" name="atemp" step="0.1" required />
+          </div>
+
+          <div class="input-group">
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" id="humidity" name="humidity" required />
+          </div>
+
+          <div class="input-group">
+            <label for="windspeed">Windspeed (km/h):</label>
+            <input type="number" id="windspeed" name="windspeed" step="0.1" required />
+          </div>
+
+          <div class="input-group">
+            <label for="user_count">Expected Users:</label>
+            <input type="number" id="user_count" name="user_count" required />
+          </div>
+        </div>
+
+        <div class="button-wrap">
+          <button type="submit">🔮 Predict</button>
+        </div>
+      </form>
+
+      <div id="result" class="result hidden">
+        <h2>📊 Prediction Result</h2>
+        <p id="count"></p>
+        <p id="category"></p>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>Tips</h3>
+      <ul>
+        <li>🌤️ Weather can affect demand!</li>
+        <li>🕒 Peak hours increase traffic & users and thus increase the price.</li>
+        <li>💧 High humidity often lowers demand.</li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
