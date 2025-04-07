@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
       try {
-        const apiKey = "f8dbaaa5356c1593534a9c679e9d10b1"; // your API key
+        const apiKey = ""; // your API key
         const weatherResponse = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
         );
