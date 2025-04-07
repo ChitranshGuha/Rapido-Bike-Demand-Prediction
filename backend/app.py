@@ -19,7 +19,6 @@ def predict():
     data = request.get_json()
 
     try:
-        # Extract datetime features
         dt = datetime.fromisoformat(data["datetime"])
         hour = dt.hour
         day = dt.day
@@ -29,7 +28,7 @@ def predict():
 
         features = pd.DataFrame([{
             "season": get_season(month),
-            "holiday": 0,  # optional: autofill if not in frontend
+            "holiday": 0,
             "workingday": 1 if weekday < 5 else 0,
             "weather": int(data["weather"]),
             "temp": float(data["temp"]),
@@ -45,15 +44,29 @@ def predict():
 
         pred = model.predict(features)[0]
         user_count = int(data["user_count"])
+        base_price = float(data["price"])
         category = get_demand_category(user_count, pred)
+        multiplier = get_price_multiplier(category)
+        adjusted_price = int(base_price * multiplier)
 
         return jsonify({
             "predicted_count": int(pred),
-            "category": category
+            "category": category,
+            "price": adjusted_price  # ✅ Important line
         })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+def get_price_multiplier(category):
+    multipliers = {
+        "very high": 1.5,
+        "high": 1.3,
+        "normal": 1.0,
+        "low": 0.8,
+        "very low": 0.6
+    }
+    return multipliers.get(category.lower(), 1.0)
 
 def get_demand_category(actual, predicted):
     diff = actual - predicted
